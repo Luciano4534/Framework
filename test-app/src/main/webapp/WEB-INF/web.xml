@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <!-- Declare the package containing the controllers for the framework to scan -->
+    <context-param>
+        <param-name>controller-package</param-name>
+        <param-value>controller</param-value>
+    </context-param>
+
+    <!-- Configure the FrontServlet of the framework -->
+    <servlet>
+        <servlet-name>FrontServlet</servlet-name>
+        <servlet-class>servlet.FrontServlet</servlet-class>
+        <!-- Ensure FrontServlet is initialized on startup to print found controllers immediately -->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <!-- Map the FrontServlet to handle all incoming requests -->
+    <servlet-mapping>
+        <servlet-name>FrontServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+</web-app>
