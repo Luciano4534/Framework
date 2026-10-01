@@ -5,6 +5,15 @@
 
   <display-name>Test Project</display-name>
 
+  <context-param>
+    <param-name>controller-classes</param-name>
+    <param-value>test.TestController</param-value>
+  </context-param>
+
+  <listener>
+    <listener-class>framework.FrontControllerListner</listener-class>
+  </listener>
+
   <servlet>
     <servlet-name>frontController</servlet-name>
     <servlet-class>framework.FrontControllerServlet</servlet-class>
