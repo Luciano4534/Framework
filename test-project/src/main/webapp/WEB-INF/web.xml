@@ -5,9 +5,33 @@
 
   <display-name>Test Project</display-name>
 
+  <context-param>
+    <param-name>controller-classes</param-name>
+    <param-value>test.TestController</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>upload-dir</param-name>
+    <param-value>/tmp/test-project-uploads</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>session-timeout</param-name>
+    <param-value>30</param-value>
+  </context-param>
+
+  <listener>
+    <listener-class>framework.FrontControllerListner</listener-class>
+  </listener>
+
   <servlet>
     <servlet-name>frontController</servlet-name>
     <servlet-class>framework.FrontControllerServlet</servlet-class>
+    <multipart-config>
+      <max-file-size>10485760</max-file-size>
+      <max-request-size>20971520</max-request-size>
+      <file-size-threshold>0</file-size-threshold>
+    </multipart-config>
   </servlet>
 
   <servlet-mapping>
