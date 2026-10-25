@@ -190,3 +190,28 @@ Realisation :
 - Injection : un parametre de type Session dans la methode d'action recoit la session du client
 - Exemple : action GET /session avec Session session (compteur de visites et nom utilisateur)
 - Tests : FrontControllerUploadSessionTest (injection session, reutilisation via cookie, expiration, suppression)
+
+  ### Sprint 10 
+Méthode d’action 
+Associer ao anaty URL 
+Ao anaty le methode reny tsy maintsy connecter vo afaka connecter amny 
+Connecte authentifier le olona vo afaka m’executer 
+
+Annotation tsy maintsy atao mipetraka eo de miverifier hoe authentifier eny sa tsia 
+Isakiny mahita ny annotation de verifiena hoe n’existe ce ty anarana variable 
+Aona ny alalany framework hoe in variable de session
+Configuration na convention
+Init Param de ty ny anarany variable a lalana hoe connecter na tsia 
+Omena ny Param ao anaty web.xml
+Methode init 
+Servlet content 
+Authentifié ty olona ty 
+Set attribut 
+
+
+
+Sprint 10 bis
+
+Rôle spécifique 
+Rôle prof no afaka m’exécuter anty 
+Rôle maromaro

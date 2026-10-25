@@ -32,7 +32,8 @@ public class FrontControllerServlet extends HttpServlet {
     public static final String CONTROLLER_CLASSES_PARAMETER = "controller-classes";
 
     private Map<UrlMethode, Mapping> mappings = new LinkedHashMap<>();
-    private SessionManager sessionManager = new SessionManager();
+    SessionManager sessionManager = new SessionManager();
+    AuthConfiguration authConfiguration = AuthConfiguration.defaults();
     private FileStorage fileStorage = new FileStorage(null);
 
     @Override
@@ -42,6 +43,7 @@ public class FrontControllerServlet extends HttpServlet {
         ServletContext context = config.getServletContext();
         sessionManager = SessionManager.from(context);
         fileStorage = FileStorage.from(context);
+        authConfiguration = AuthConfiguration.from(context);
 
         @SuppressWarnings("unchecked")
         Map<UrlMethode, Mapping> contextMappings =
@@ -103,7 +105,11 @@ public class FrontControllerServlet extends HttpServlet {
             resp.getWriter().write("Aucun mapping pour " + req.getMethod() + " " + path);
             return;
         }
-         
+
+        if (!authorize(mapping, req, resp)) {
+            return;
+        }
+
         //recuperation si c'est un  API rest  
         try {
             Object result = invoke(mapping, req, resp);
@@ -148,6 +154,42 @@ public class FrontControllerServlet extends HttpServlet {
             resp.setContentType("text/plain; charset=UTF-8");
             resp.getWriter().write("Impossible d'invoquer la méthode du mapping");
         }
+    }
+
+    private boolean authorize(Mapping mapping, HttpServletRequest req, HttpServletResponse resp)
+            throws IOException {
+        Authenticated annotation = mapping.getMethod().getAnnotation(Authenticated.class);
+        if (annotation == null) {
+            annotation = mapping.getType().getAnnotation(Authenticated.class);
+        }
+        if (annotation == null) {
+            return true;
+        }
+
+        Session session = sessionManager.getOrCreate(req, resp);
+
+        if (!authConfiguration.isAuthenticated(session)) {
+            return reject(req, resp, HttpServletResponse.SC_UNAUTHORIZED, "Authentification requise");
+        }
+
+        if (!authConfiguration.hasAnyRole(session, annotation.roles())) {
+            return reject(req, resp, HttpServletResponse.SC_FORBIDDEN, "Role insuffisant");
+        }
+
+        req.setAttribute(AuthConfiguration.USER_ATTRIBUTE,
+                session.get(authConfiguration.getSessionKey()));
+        return true;
+    }
+
+    private boolean reject(HttpServletRequest req, HttpServletResponse resp, int status, String message)
+            throws IOException {
+        String loginUrl = authConfiguration.getLoginUrl();
+        if (status == HttpServletResponse.SC_UNAUTHORIZED && loginUrl != null) {
+            resp.sendRedirect(req.getContextPath() + loginUrl);
+            return false;
+        }
+        resp.sendError(status, message);
+        return false;
     }
 
     private void addArgToRequest(HttpServletRequest req, Map<String, Object> data) {

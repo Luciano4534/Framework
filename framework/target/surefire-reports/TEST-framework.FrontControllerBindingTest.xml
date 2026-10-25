@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="framework.FrontControllerBindingTest" time="1.582" tests="13" errors="0" skipped="0" failures="0" flakes="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="framework.FrontControllerBindingTest" time="0.078" tests="13" errors="0" skipped="0" failures="0" flakes="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -13,7 +13,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="FR"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/luciano/Documents/S5/sprint/Framework/framework/target/surefire/surefirebooter-20261025180757102_3.jar /home/luciano/Documents/S5/sprint/Framework/framework/target/surefire 2026-10-25T18-07-56_966-jvmRun1 surefire-20261025180757102_1tmp surefire_0-20261025180757102_2tmp"/>
+    <property name="sun.java.command" value="/home/luciano/Documents/S5/sprint/Framework/framework/target/surefire/surefirebooter-20261025230507951_3.jar /home/luciano/Documents/S5/sprint/Framework/framework/target/surefire 2026-10-25T23-05-07_821-jvmRun1 surefire-20261025230507951_1tmp surefire_0-20261025230507951_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/luciano/Documents/S5/sprint/Framework/framework/target/test-classes:/home/luciano/Documents/S5/sprint/Framework/framework/target/classes:/home/luciano/.m2/repository/jakarta/servlet/jakarta.servlet-api/6.0.0/jakarta.servlet-api-6.0.0.jar:/home/luciano/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.17.2/jackson-databind-2.17.2.jar:/home/luciano/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.17.2/jackson-annotations-2.17.2.jar:/home/luciano/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.17.2/jackson-core-2.17.2.jar:/home/luciano/.m2/repository/org/junit/jupiter/junit-jupiter/6.0.3/junit-jupiter-6.0.3.jar:/home/luciano/.m2/repository/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.jar:/home/luciano/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/luciano/.m2/repository/org/junit/platform/junit-platform-commons/6.0.3/junit-platform-commons-6.0.3.jar:/home/luciano/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/luciano/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/home/luciano/.m2/repository/org/junit/jupiter/junit-jupiter-params/6.0.3/junit-jupiter-params-6.0.3.jar:/home/luciano/.m2/repository/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.jar:/home/luciano/.m2/repository/org/junit/platform/junit-platform-engine/6.0.3/junit-platform-engine-6.0.3.jar:/home/luciano/.m2/repository/org/mockito/mockito-core/5.23.0/mockito-core-5.23.0.jar:/home/luciano/.m2/repository/net/bytebuddy/byte-buddy/1.17.7/byte-buddy-1.17.7.jar:/home/luciano/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.7/byte-buddy-agent-1.17.7.jar:/home/luciano/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -28,7 +28,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="/home/luciano/Documents/S5/sprint/Framework/framework/target/surefire/surefirebooter-20261025180757102_3.jar"/>
+    <property name="surefire.real.class.path" value="/home/luciano/Documents/S5/sprint/Framework/framework/target/surefire/surefirebooter-20261025230507951_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.20.1+1-1-24.04-Ubuntu"/>
     <property name="user.name" value="luciano"/>
@@ -53,17 +53,17 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="injectsRequestAndBindsOtherParameters" classname="framework.FrontControllerBindingTest" time="0.241"/>
-  <testcase name="throwsWhenRequiredParameterBlank" classname="framework.FrontControllerBindingTest" time="0.026"/>
-  <testcase name="throwsWhenRequiredParameterAbsent" classname="framework.FrontControllerBindingTest" time="0.007"/>
-  <testcase name="ignoresNonSimpleField" classname="framework.FrontControllerBindingTest" time="0.006"/>
-  <testcase name="throwsWhenObjectHasNoDefaultConstructor" classname="framework.FrontControllerBindingTest" time="0.005"/>
-  <testcase name="keepsObjectDefaultsWhenParametersAbsent" classname="framework.FrontControllerBindingTest" time="0.005"/>
-  <testcase name="bindsUsingRequestParamAnnotationName" classname="framework.FrontControllerBindingTest" time="0.005"/>
-  <testcase name="bindsByNameFromRequestParameters" classname="framework.FrontControllerBindingTest" time="0.006"/>
-  <testcase name="bindsObjectUsingSetterAndDirectField" classname="framework.FrontControllerBindingTest" time="0.009"/>
-  <testcase name="bindsComplexObjectArgument" classname="framework.FrontControllerBindingTest" time="0.003"/>
+  <testcase name="injectsRequestAndBindsOtherParameters" classname="framework.FrontControllerBindingTest" time="0.005"/>
+  <testcase name="throwsWhenRequiredParameterBlank" classname="framework.FrontControllerBindingTest" time="0.006"/>
+  <testcase name="throwsWhenRequiredParameterAbsent" classname="framework.FrontControllerBindingTest" time="0.004"/>
+  <testcase name="ignoresNonSimpleField" classname="framework.FrontControllerBindingTest" time="0.004"/>
+  <testcase name="throwsWhenObjectHasNoDefaultConstructor" classname="framework.FrontControllerBindingTest" time="0.003"/>
+  <testcase name="keepsObjectDefaultsWhenParametersAbsent" classname="framework.FrontControllerBindingTest" time="0.002"/>
+  <testcase name="bindsUsingRequestParamAnnotationName" classname="framework.FrontControllerBindingTest" time="0.004"/>
+  <testcase name="bindsByNameFromRequestParameters" classname="framework.FrontControllerBindingTest" time="0.004"/>
+  <testcase name="bindsObjectUsingSetterAndDirectField" classname="framework.FrontControllerBindingTest" time="0.006"/>
+  <testcase name="bindsComplexObjectArgument" classname="framework.FrontControllerBindingTest" time="0.002"/>
   <testcase name="injectsRequestAndResponse" classname="framework.FrontControllerBindingTest" time="0.003"/>
-  <testcase name="usesDefaultValuesWhenParameterAbsent" classname="framework.FrontControllerBindingTest" time="0.005"/>
-  <testcase name="throwsWhenValueInvalid" classname="framework.FrontControllerBindingTest" time="0.009"/>
+  <testcase name="usesDefaultValuesWhenParameterAbsent" classname="framework.FrontControllerBindingTest" time="0.003"/>
+  <testcase name="throwsWhenValueInvalid" classname="framework.FrontControllerBindingTest" time="0.006"/>
 </testsuite>

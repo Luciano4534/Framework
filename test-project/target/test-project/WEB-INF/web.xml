@@ -7,7 +7,7 @@
 
   <context-param>
     <param-name>controller-classes</param-name>
-    <param-value>test.TestController</param-value>
+    <param-value>test.TestController,test.AuthController</param-value>
   </context-param>
 
   <context-param>
@@ -18,6 +18,21 @@
   <context-param>
     <param-name>session-timeout</param-name>
     <param-value>30</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>auth-session-key</param-name>
+    <param-value>user</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>roles-session-key</param-name>
+    <param-value>roles</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>login-url</param-name>
+    <param-value>/login</param-value>
   </context-param>
 
   <listener>
