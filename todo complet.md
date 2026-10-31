@@ -215,3 +215,16 @@ Sprint 10 bis
 Rôle spécifique 
 Rôle prof no afaka m’exécuter anty 
 Rôle maromaro
+
+    ###Sprint-11 
+avant : dans notre app de test, on avait par exemple une classe EtudiantControl'er.java contenant des méthodes dedans et quand on entre dans cette classe, notre framework créé à chaque fois une instance de cet controller quand on l'appelle, par exemple on utilise méthode1 , méthode2 ....
+
+
+Objectif : rendre notre framework pour que lorsqu'il appelle un controller dans ce FrontControllerServlet , il instance UNE FOIS Seulement un contrôler et n'instance plus quand il appelle plus tard ce controller
+
+Realisation :
+- Ajout d'un cache `controllers` de type `Map<Class<?>, Object>` (ConcurrentHashMap) dans FrontControllerServlet
+- Remplacement de l'instanciation par requete dans invoke par l'appel a controllerFor(type)
+- controllerFor : verification du cache puis instanciation unique protegee par un double controle synchronise
+- Une seule instance par classe de controleur, reutilisee pour toutes ses methodes et toutes les requetes
+- Tests : FrontControllerControllerLifecycleTest (instanciation unique, reutilisation de l'etat, une instance par classe de controleur)
