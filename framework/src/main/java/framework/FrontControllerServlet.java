@@ -13,6 +13,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import framework.exception.BindingException;
@@ -32,6 +33,7 @@ public class FrontControllerServlet extends HttpServlet {
     public static final String CONTROLLER_CLASSES_PARAMETER = "controller-classes";
 
     private Map<UrlMethode, Mapping> mappings = new LinkedHashMap<>();
+    private final Map<Class<?>, Object> controllers = new ConcurrentHashMap<>();
     SessionManager sessionManager = new SessionManager();
     AuthConfiguration authConfiguration = AuthConfiguration.defaults();
     private FileStorage fileStorage = new FileStorage(null);
@@ -204,9 +206,24 @@ public class FrontControllerServlet extends HttpServlet {
             throws ReflectiveOperationException, BindingException {
         Method method = mapping.getMethod();
         method.setAccessible(true);
-        Object controller = mapping.getType().getDeclaredConstructor().newInstance();
+        Object controller = controllerFor(mapping.getType());
         Object[] arguments = resolveArguments(method, req, resp);
         return method.invoke(controller, arguments);
+    }
+
+    private Object controllerFor(Class<?> type) throws ReflectiveOperationException {
+        Object controller = controllers.get(type);
+        if (controller != null) {
+            return controller;
+        }
+        synchronized (controllers) {
+            controller = controllers.get(type);
+            if (controller == null) {
+                controller = type.getDeclaredConstructor().newInstance();
+                controllers.put(type, controller);
+            }
+            return controller;
+        }
     }
 
     Object[] resolveArguments(Method method, HttpServletRequest req, HttpServletResponse resp)
